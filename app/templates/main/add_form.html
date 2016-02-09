@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}FEEDR - add feed{% endblock %}
+
+{% block page_content %}
+
+<div class="row">
+    <h1>Add Feed</h1>
+    <div class="col-md-4">
+        {{ wtf.quick_form(form) }}
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+    <h1>My Feeds</h1>
+    <div class="col-md-12">
+        <ul>
+            {% for feed in feeds %}
+                <li>
+                    {{ feed.name }} // {{ feed.url }} // {{ feed.actif }}
+                    <a href="{{ url_for('main.articles', id_feed=feed.id) }}"> Titles </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}FEEDR - All Articles{% endblock %}
+
+{% block page_content %}
+<div class="row">
+    <h1>All my Articles</h1>
+    <div class="col-md-12">
+        <ul>
+            {% for article in articles %}
+                <li>
+                    <a href="{{ article.url }}" target="_blank">
+                        {{ article.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<hr>
+
+<!-- <div class="row">
+    <h1>TEST</h1>
+    <div class="col-md-12">
+        <ul>
+            {% for article in articles2 %}
+                <li>
+                    <a href="{{ article[1] }}" target="_blank"> {{ article[0][0] }} </a>
+                    {% for i in range(0, article|length) %}
+                        <ul>
+                            <li><a href="{{ article[i][2] }}" target="_blank">
+                                {{ article[i][1] }} </a></li>
+                        </ul>
+                    {% endfor %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div> -->
+
+{% endblock %}

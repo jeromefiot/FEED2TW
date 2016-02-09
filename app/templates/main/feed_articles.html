@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}FEEDR - Articles Feeds{% endblock %}
+
+{% block page_content %}
+<div class="row">
+    <h1>My Feeds</h1>
+    <div class="col-md-12">
+        <ul>
+            {% for article in articles %}
+                <li>
+                    <a href="{{ article[2] }}" target="_blank"> {{ article[1] }} </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
