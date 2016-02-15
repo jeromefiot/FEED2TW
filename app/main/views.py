@@ -6,7 +6,6 @@ from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext.admin.contrib.fileadmin import FileAdmin
 
 import feedparser
-import time
 
 from . import main
 from ..classes_feed import RssFlux
@@ -22,6 +21,7 @@ from ..decorators import admin_required
 # PAGES PUBLIQUES
 # ---------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------
+
 
 @main.route('/')
 def index():
@@ -158,7 +158,6 @@ def list_users():
     user = User.query.all()
     if request.method == 'POST':
         flash("Suppression de id")
-
     return render_template('list_users.html', user=user)
 
 
@@ -167,9 +166,9 @@ def list_users():
 @admin_required
 def zob():
     test = RssFlux(1)
-    test.tweet_articles()
-
-    return render_template('index.html')
+    test.activate_get()
+    zob = test.activate_tweet()
+    return render_template('index.html', zob=zob)
 
 # ---------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------
@@ -187,10 +186,8 @@ class MyModelView(ModelView):
     def is_accessible(self):
         return current_user.is_administrator()
 
-
 class MyModelView2(ModelView):
     pass
-
 
 class MyModelView3(ModelView):
     pass
