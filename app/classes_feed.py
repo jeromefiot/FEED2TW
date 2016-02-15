@@ -22,6 +22,12 @@ from .models import Feed, Article
 # ---------------------------------------------------------------------------------
 
 class RepeatedTimer(object):
+    """
+    Run function (arg or not) every interval seconds
+    http://stackoverflow.com/questions/3393612/
+    run-certain-code-every-n-seconds
+    """
+
     def __init__(self, interval, function, *args, **kwargs):
         self._timer     = None
         self.interval   = interval
