@@ -3,6 +3,7 @@ tests/
 
 run.py
 config.py
+infos_tweet.py
 
 *.py[cod]
 

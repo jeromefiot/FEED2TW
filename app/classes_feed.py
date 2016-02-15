@@ -84,6 +84,8 @@ class RssFlux():
             self.hashtag = flux_info.hashtag
         else:
             self.hashtag = ''
+        self.rt = None
+        self.rt2 = None
         # thread name
         # self.name_Thread = '{0} {1}'.format('thread', idflux)
         # print self.name_Thread
@@ -151,6 +153,7 @@ class RssFlux():
                         print "Tweet ID : "+str(tweets.id)+" : ENVOYE"
                 # check rate limit
                 except tweepy.RateLimitError:
+                    print "Rate limite reach...sarace"
                     time.sleep(16 * 60)
             else:
                 # no tweet to send
@@ -173,7 +176,7 @@ class RssFlux():
 
     def desactivate_get(self):
         """Desactivate Flux to get Articles."""
-        if self.rt2.is_running:
+        if self.rt2:
             self.rt2.stop()
             # update Feed
             flux_info = Feed.query.filter_by(id=self.idflux).first()
@@ -199,7 +202,7 @@ class RssFlux():
 
     def desactivate_tweet(self):
         """Desactivate Flux to get Articles."""
-        if self.rt.is_running:
+        if self.rt:
             self.rt.stop()
             # update Feed
             flux_info = Feed.query.filter_by(id=self.idflux).first()

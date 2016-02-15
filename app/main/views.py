@@ -30,6 +30,9 @@ def index():
 
 @main.route('/contact')
 def contact():
+    test = RssFlux(1)
+    test.desactivate_get()
+    test.desactivate_tweet()
     return render_template('contact.html')
 
 
@@ -167,8 +170,8 @@ def list_users():
 def zob():
     test = RssFlux(1)
     test.activate_get()
-    zob = test.activate_tweet()
-    return render_template('index.html', zob=zob)
+    test.activate_tweet()
+    return render_template('index.html')
 
 # ---------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------
